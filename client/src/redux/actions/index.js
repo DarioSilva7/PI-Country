@@ -6,11 +6,11 @@ const URL_GET = "http://localhost:3001/countries/";
 export function obtain() {
   return async function (dispatch) {
     //con el dispatch le mandamos la accion al reducer.
-    let pedido = await axios.get(URL_GET); // conexion con el back
-
+    let {data} = await axios.get(URL_GET); // conexion con el back
+    console.log(data,"<============== data");
     return dispatch({
       type: "OBTENER_PAIS",
-      payload: pedido.data,
+      payload: data,
       //porque axios trae la info a traves de data
     });
   };
@@ -32,7 +32,7 @@ export function getByName(name) {
 export function obtainPorId(id) {
   return async function (dispatch) {
     try {
-      const porId = await axios.get(URL_GET + "/detail/" + id);
+      const porId = await axios.get(URL_GET + id);
       return dispatch({
         type: "OBTENER_ONE",
         payload: porId.data,
