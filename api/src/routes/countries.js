@@ -5,6 +5,6 @@ const { getCountries, getCountryDetail } = require("../controllers/countriesCont
 
 router.get("/", getCountries )
 
-router.get("/detail/:id", getCountryDetail)
+router.get("/:id", getCountryDetail)
 
 module.exports = router;
